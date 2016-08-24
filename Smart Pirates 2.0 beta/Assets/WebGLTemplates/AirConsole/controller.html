@@ -1,6 +1,7 @@
 
 <html>
 <head>
+    <script type="text/javascript" src="../rate-limiter/rate-limiter.js"></script>
     <script type="text/javascript"
             src="https://www.airconsole.com/api/airconsole-1.4.0.js"></script>
     <script type="text/javascript">
@@ -9,15 +10,15 @@
                               navigator.mozVibrate ||
                               navigator.msVibrate);
         */
-        var airconsole;
-        //var rateLimiter = new RateLimiter(airconsole);
+        var airconsole = new AirConsole({ "orientation": "portrait", "device_motion": 100, "synchronize_time": "true" });
+        var rateLimiter = new RateLimiter(airconsole);
         /**
          * Sets up the communication to the screen.
          */
 
        
-        function init() {
-            airconsole = new AirConsole({ "orientation": "portrait", "device_motion": 100, "synchronize_time": "true" });
+       // function init() {
+        //    airconsole = new AirConsole({ "orientation": "portrait", "device_motion": 100, "synchronize_time": "true" });
         /*    airconsole.onMessage = function(from, data) {
                 if (from == AirConsole.SCREEN && data.vibrate) {
                     navigator.vibrate(data.vibrate);
@@ -26,7 +27,7 @@
             }
        */
 
-        }
+     //   }
 
 
 
@@ -63,8 +64,9 @@
 
         //send move (buttonpress through ontouchstart, see bottom html code)
         function move(amount) {
-            airconsole.message(AirConsole.SCREEN, { move: amount, "ts": airconsole.getServerTime() })
+           // rateLimiter.message(AirConsole.SCREEN, { move: amount, "ts": airconsole.getServerTime() })
            // airconsole.message(AirConsole.SCREEN, { move: amount})
+              rateLimiter.message(AirConsole.SCREEN, { move: amount })
         }
 
 
@@ -72,11 +74,11 @@
         //send accelerometer data
         AirConsole.prototype.onDeviceMotion = function moveAcc(data) {
            
-              airconsole.message(AirConsole.SCREEN, { x: data.x})
+              rateLimiter.message(AirConsole.SCREEN, { x: data.x})
 
               //airconsole.message(AirConsole.SCREEN, { x: data.x })
               //airconsole.message(AirConsole.SCREEN, { y: data.y })
-              airconsole.message(AirConsole.SCREEN, { z: data.z })
+              //airconsole.message(AirConsole.SCREEN, { z: data.z })
 
           }
  

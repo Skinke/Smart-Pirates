@@ -66,10 +66,6 @@ public class GameManager : MonoBehaviour
 
             AddPlayer();
 
-            //int playerID = active_player;
-            // GameObject cubePlayer = Instantiate(myCube, new Vector3(0, 2, 0), Quaternion.identity) as GameObject;
-            //cubePlayer.gameObject.tag = "CubePlayer" + playerID;
-            //cubePlayer.name = "CubePlayer" + playerID;
 
         }
 
@@ -111,13 +107,13 @@ public class GameManager : MonoBehaviour
                 playerList[0].GetComponent<MovePlayer>().MoveShip((float)data["x"]);
                
                 //latency 
-                long latency_ms = AirConsole.instance.GetServerTime() - (long)data["ts"];
-                     Debug.Log("device " + " latency: " + latency_ms);
+                //long latency_ms = AirConsole.instance.GetServerTime() - (long)data["ts"];
+                     //Debug.Log("device " + " latency: " + latency_ms);
                 
 
 
-                playerList[0].GetComponent<MovePlayer>().MoveIt((float)data["move"]);
-                      print(playerList[0].name + " is moving");
+                //playerList[0].GetComponent<MovePlayer>().MoveIt((float)data["move"]);
+                      //print(playerList[0].name + " is moving");
                 
                 
 
@@ -125,8 +121,8 @@ public class GameManager : MonoBehaviour
             }
                     if (active_player == 1)
                     {
-                        playerList[1].GetComponent<MovePlayer>().MoveIt((float)data["move"]);
-                        print(playerList[1].name + " is moving");
+                        //playerList[1].GetComponent<MovePlayer>().MoveIt((float)data["move"]);
+                        //print(playerList[1].name + " is moving");
 
                 
 

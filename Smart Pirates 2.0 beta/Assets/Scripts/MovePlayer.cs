@@ -46,8 +46,7 @@ public class MovePlayer : MonoBehaviour
 
     public void MoveShip(float x)
     {
-        print("hej");
-        
+              
 
 
         Vector3 dir = new Vector3(x, 0f, 0);
